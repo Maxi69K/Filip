@@ -1,0 +1,245 @@
+    
+    // type this in the terminal 
+// ---------------------------------
+// sass --watch style.scss:style.css
+// ---------------------------------
+
+$orange: #f74843;
+$white: white;
+$black: black;
+$card-bg: #ededed;
+
+@mixin flex ($justify, $align, $direction, $gap){
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+    gap: $gap	
+}
+
+@mixin media ($breakpoint){
+    @media(min-width:$breakpoint){
+        @content;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo img {
+    width: 150px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+
+#videoBG {
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+.logo, header, nav h2, .card-description {
+    padding: 0 5vw;
+    @include media (1024px){
+        padding: 0 11vw;
+    }
+}
+
+// ===============
+// .margins {
+//     margin: 0 6vw;
+//     @include media (1024px){
+//         margin: 0 11vw;
+//     }
+// }
+
+.logo {
+    padding-top: 3rem;
+    margin-bottom: 17%;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid $white;
+
+    &:focus {
+        outline: none
+    }
+}
+
+header {
+    @include flex(center, start, column, 2rem);
+    margin-top: 10%;
+    color: $white;
+    position: relative;
+    @include media(768px){
+        width: 55%;
+    }
+
+    h1 {
+        font-size:#{"min(max(1.7rem, 6vw), 2.2rem)"};
+        color: $orange;
+    }
+
+    p  {
+        line-height: 2rem;
+        font-size:#{"min(max(1.9rem, 3.9vw), 1.2rem)"};
+    }
+
+    .search {
+        @include flex(start, center, row, 0.3rem);
+        width: 100%;
+        margin-top: 2rem;
+        @include media (768px){
+            position: absolute;
+            top: 68%;
+            left: 100%;
+        }
+
+        input {
+            width: 90%;
+            font-size:#{"min(max(1.9rem, 3.9vw), 1.2rem)"};
+            background: transparent;
+            padding-bottom: 10px;
+            color: red;
+            @include media (768px){
+                width: 50%;
+            }
+
+            &::placeholder {
+                color: $white;
+              }
+        }
+
+        span {
+            font-size: 2.5rem;
+            cursor: pointer
+        }
+    }
+}
+
+nav {
+    @include flex (center, start, column, 1rem);
+    margin: 5rem 0;
+
+    h2 {
+        cursor: pointer;
+        color: $orange;
+        font-size: 4rem;
+        font-weight: 900;
+        transition: 0.2s ease;
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    .last-link {
+        @extend h2
+    }
+
+    .card-description {
+        background-color: $card-bg;
+        width: 100vw;
+        margin: 2.3rem 0;
+        padding-top: 5rem;
+        padding-bottom: 7rem; 
+        // height: max-content;
+        @include flex(start, start, column, 2.5rem);
+        @include media(1024px){
+            flex-direction: row;
+            padding-top: 8rem;
+            padding-bottom: 10rem; 
+            gap: 10rem;
+        }
+    
+        a {
+            color: $black;
+            font-size: 1.5rem;
+            font-weight: 900;
+            cursor: pointer;
+            @include media(1024px){
+                font-size: 1.3rem;
+            }
+        }
+    
+        span {
+            font-weight: 400;
+        }
+    }
+
+    .grid {
+        @include media(1024px){
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        display: grid;
+        gap: 3rem;
+        }
+    } 
+}
+
+.hide {
+    display: none !important;
+}
+
+
+// -----------  footer  -------------
+
+footer {
+    @include flex(center, start, column, 3rem);
+    background-color: $orange;
+    padding: 3rem 5%;
+    color: $white;
+    @media (min-width: 768px){
+        @include flex(space-between, start, row, 1rem);
+        padding: 3rem 11%;
+    }
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        @media (min-width: 768px){
+            font-size: 0.8rem;
+        }
+    }
+
+    a {
+        color: $black;
+        font-size: 1.8rem;
+        @media (min-width: 768px){
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    img {
+        width: 300px;
+        @media (min-width: 768px){
+            width: 200px;
+        }
+    }
+}
+
+.contact, .stuff, .more-stuff {
+    @include flex(center, start, column, 0.4rem);
+}
+
