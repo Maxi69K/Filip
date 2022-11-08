@@ -42,7 +42,10 @@ body {
     overflow-x: hidden;
 }
 
-
+#black-foil {
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1;
+}
 
 #videoBG {
     position: fixed;
@@ -159,7 +162,6 @@ nav {
         margin: 2.3rem 0;
         padding-top: 5rem;
         padding-bottom: 7rem; 
-        // height: max-content;
         @include flex(start, start, column, 2.5rem);
         @include media(1024px){
             flex-direction: row;
@@ -181,6 +183,8 @@ nav {
         span {
             font-weight: 400;
         }
+
+        transition: all .3s linear;
     }
 
     .grid {
